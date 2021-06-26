@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load user_filters %}
+
+{% block title %} Запись пользователя: {{ post.author.get_full_name }} {% endblock %}
+{% block header %} Запись пользователя: {{ post.author.get_full_name }} {% endblock %}
+
+{% block content %}
+
+    <main role="main" class="container">
+        <div class="row">
+
+            {% include 'profile_card.html' %}
+
+                <div class="col-md-9">
+
+                    {% include "post_item.html" with post=post %}
+                    {% include 'comments.html' %}
+
+                </div>
+        </div>
+    </main>
+
+{% endblock %}

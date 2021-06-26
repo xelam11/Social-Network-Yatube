@@ -1,0 +1,37 @@
+<!-- Форма добавления комментария -->
+{% load user_filters %}
+
+{% if user.is_authenticated %}
+<div class="card my-4">
+    <form method="post" action="{% url 'posts:add_comment' post.author.username post.id %}">
+        {% csrf_token %}
+        <h5 class="card-header">Добавить комментарий:</h5>
+        <div class="card-body">
+            <div class="form-group">
+                {{ form.text|addclass:"form-control" }}
+            </div>
+            {%  if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ form.text.errors }}
+                </div>
+            {%  endif %}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+<!-- Комментарии -->
+{% for comment in post.comments.all %}
+            <div class="media card mb-4">
+                <div class="media-body card-body">
+                    <h5 class="mt-0">
+                        <a href="{% url 'posts:profile' comment.author.username %}"
+                           name="comment_{{ comment.id }}">
+                            {{ comment.author.username }}
+                        </a>
+                    </h5>
+                    <p>{{ comment.text | linebreaksbr }}</p>
+                </div>
+            </div>
+            {% endfor %}
