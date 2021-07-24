@@ -34,7 +34,7 @@
 
 ```python manage.py runserver```
 
-### Для доступа в режим модератора, необходимо:
+### Для доступа в режим модератора необходимо:
 1. Создать суперпользователя:
 
 ```python manage.py createsuperuser```
@@ -44,3 +44,6 @@
 3. Перейти по ссылке:
 
 ```http://127.0.0.1:8000/admin```
+
+## Лицензия
+[BSD 3-Clause License](https://github.com/xelam11/Social-Network-Yatube/blob/main/LICENSE)
